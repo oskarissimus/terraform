@@ -18,3 +18,9 @@ sudo apt-get update && sudo apt-get install terraform
 
 ## credentials
 replace .credentials.dev.json with proper credetials
+
+## logging into elastic thru bastion
+```
+ssh-add
+ssh -A terraform@xx.xx.xx.xx
+ssh 10.0.10.2
