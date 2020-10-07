@@ -9,3 +9,7 @@ variable "random" {
 variable "elastic_subnetwork_name" {
   type=string
 }
+
+variable "nat_ip" {
+  type=string
+}

@@ -7,6 +7,6 @@ variable "random" {
 variable "provider_subnetwork_name" {
   type=string
 }
-variable "provider_address" {
+variable "nat_ip" {
   type=string
 }

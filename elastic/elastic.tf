@@ -1,6 +1,12 @@
 resource "google_compute_instance" "elastic" {
   name         = var.elastic_name
-  machine_type = "f1-micro"
+#  machine_type = "f1-micro"
+  machine_type = "n1-standard-2"
+  tags = ["elastic"]
+  scheduling {
+    preemptible = true
+    automatic_restart = false
+  }
 
   boot_disk {
     initialize_params {
@@ -11,6 +17,7 @@ resource "google_compute_instance" "elastic" {
   network_interface {
     subnetwork = var.elastic_subnetwork_name
     access_config {
+      nat_ip = var.nat_ip
     }
   }
   metadata = {

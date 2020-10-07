@@ -1,6 +1,12 @@
 resource "google_compute_instance" "bastion" {
   name         = var.bastion_name
   machine_type = "f1-micro"
+  tags = ["bastion"]
+
+  scheduling {
+    preemptible = true
+    automatic_restart = false
+  }
 
   boot_disk {
     initialize_params {
@@ -9,10 +15,9 @@ resource "google_compute_instance" "bastion" {
   }
 
   network_interface {
-    # A default network is created for all GCP projects
     subnetwork = var.provider_subnetwork_name
     access_config {
-      nat_ip = var.provider_address
+      nat_ip = var.nat_ip
     }
   }
   metadata = {
