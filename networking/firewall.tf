@@ -24,7 +24,7 @@ resource "google_compute_firewall" "from-bastion-to-all" {
 
   allow {
     protocol = "tcp"
-    ports = ["22"]
+    ports = ["22","5601"]
   }
   depends_on = [google_compute_network.network]
 }
